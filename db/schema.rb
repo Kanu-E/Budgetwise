@@ -15,8 +15,6 @@ ActiveRecord::Schema.define(version: 2020_08_25_143130) do
   create_table "expenses", force: :cascade do |t|
     t.string "title"
     t.integer "amount"
-    t.date "due_date"
-    t.boolean "paid"
     t.integer "user_id"
   end
 

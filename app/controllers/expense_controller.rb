@@ -4,4 +4,8 @@ class ExpenseController < ApplicationController
         erb :'expense/new'   
     end
 
+    post '/expenses' do
+      exp =  Expense.create(params)
+    end
+
 end
