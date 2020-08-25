@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_173536) do
+ActiveRecord::Schema.define(version: 2020_08_25_143130) do
+
+  create_table "expenses", force: :cascade do |t|
+    t.string "title"
+    t.integer "amount"
+    t.date "due_date"
+    t.boolean "paid"
+    t.integer "user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
