@@ -22,8 +22,8 @@ class SessionsController < ApplicationController
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
-        
             redirect '/user_homepage'
+        else
             erb :'sessions/signin_error'
         end
        
@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
     get "/logout" do
         session.clear
         redirect "/"
-    end
+      end
 
 
 end
