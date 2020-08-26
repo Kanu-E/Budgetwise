@@ -11,7 +11,15 @@ class ExpenseController < ApplicationController
 
     get '/expenses' do
         @expenses = Expense.all
-        erb :'expense/show'   
+        erb :'expense/index'   
     end
+
+    get '/expenses/:id/edit' do
+        @expense = Expense.find(params[:id])
+        erb :'expense/edit'
+    end
+
+
+
 
 end

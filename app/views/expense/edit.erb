@@ -1,0 +1,11 @@
+<br>
+<form action="/expenses/<%= @expense.id %>" method="POST">
+      <input id="hidden" type="hidden" name="_method" value="patch">
+      <label for "title">Title:</label>
+      <input type="text" name="title" value="<%= @expense.title %>">
+      <label for "content">Content:</label>
+      <input type="text" id="amount" name="content" value="<%= @expense.amount %>">
+      <br>
+      <br>
+      <input type="submit" value="update expense" >
+      </form>
