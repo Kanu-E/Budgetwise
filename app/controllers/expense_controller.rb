@@ -5,8 +5,8 @@ class ExpenseController < ApplicationController
     end
 
     post '/expenses' do
-       
-      exp =  Expense.create(params)
+      exp =  current_user.expenses.build(params)
+      exp.save
       redirect '/expenses'
     end
 

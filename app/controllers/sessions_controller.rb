@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
     post '/signup' do
         if params[:username].empty? || params[:email].empty?
-            erb :'sessions/signup_error'
+            erb :'sessions/signup'
         else
         user = User.create(params)
         session[:user_id] = user.id
@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id
             redirect '/expenses'
         else
-            erb :'sessions/signin_error'
+            erb :'sessions/signin'
         end
        
     end
