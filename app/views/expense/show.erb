@@ -1,0 +1,9 @@
+
+<h2> Here are your current outstanding expenses </h2>
+<br>
+<%@expenses.each do |expense|%>
+<p><h5><%= expense.title %>: $<%= expense.amount %></h5></p>
+<%end%>
+
+
+    
