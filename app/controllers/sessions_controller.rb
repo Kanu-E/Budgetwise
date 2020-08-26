@@ -5,13 +5,13 @@ class SessionsController < ApplicationController
     end
 
     post '/signup' do
+        if params[:username].empty? || params[:email].empty?
+            erb :'sessions/signup_error'
+        else
         user = User.create(params)
         session[:user_id] = user.id
-        redirect '/user_homepage'
-    end
-
-    get '/user_homepage' do
-        erb :'sessions/index'
+        redirect '/expenses'
+        end
     end
 
     get '/signin' do
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
-            redirect '/user_homepage'
+            redirect '/expenses'
         else
             erb :'sessions/signin_error'
         end

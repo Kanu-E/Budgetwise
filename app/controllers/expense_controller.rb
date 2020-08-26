@@ -5,13 +5,19 @@ class ExpenseController < ApplicationController
     end
 
     post '/expenses' do
+       
       exp =  Expense.create(params)
       redirect '/expenses'
     end
 
     get '/expenses' do
-        @expenses = Expense.all
-        erb :'expense/index'   
+        if logged_in?
+            @expenses = Expense.all
+            erb :'expense/index' 
+        else  
+            redirect '/signin'
+        end
+
     end
 
     get '/expenses/:id' do
