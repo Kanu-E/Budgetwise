@@ -1,8 +1,10 @@
 
 <h2> Here are your current outstanding expenses </h2>
 
-<%@expenses.each do |expense|%>
-<a href= expenses/<%=expense.id%> <p><%= expense.title %>: $<%= expense.amount %> </p>
+<%current_user.expenses.each do |expense|%>
+ <p><%= expense.title %>: $<%= expense.amount %> 
+ <a href= expenses/<%=expense.id%>/edit> Edit <a/></p>
+
 <%end%>
 
 <p> <a href="/expenses/new">Create New Expense </p>

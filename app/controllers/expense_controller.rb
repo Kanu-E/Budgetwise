@@ -5,14 +5,16 @@ class ExpenseController < ApplicationController
     end
 
     post '/expenses' do
-      exp =  current_user.expenses.build(params)
-      exp.save
+      @exp =  current_user.expenses.build(params)
+      if @exp.save
       redirect '/expenses'
+      else
+        erb :'expense/new'   
+      end
     end
 
     get '/expenses' do
         if logged_in?
-            @expenses = Expense.all
             erb :'expense/index' 
         else  
             redirect '/signin'
@@ -20,14 +22,11 @@ class ExpenseController < ApplicationController
 
     end
 
-    get '/expenses/:id' do
-        @expense = Expense.find(params["id"])
-        erb :'expense/show'
-    end
-
     get '/expenses/:id/edit' do
         @expense = Expense.find(params[:id])
+        if @expense.user = current_user
         erb :'expense/edit'
+        end
     end
 
     patch '/expenses/:id' do
