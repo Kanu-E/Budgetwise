@@ -2,12 +2,16 @@
 <h2> Here are your current outstanding expenses </h2>
 
 <div>
+<% if current_user.expenses.empty? %>
+<p>  Hello <%=current_user.username%> you do not have any expenses yet, you can create new expenses <a href="/expenses/new">here. </p>
+    <%else%>
 <%current_user.expenses.each do |expense|%>
  <p><%= expense.title %>: $<%= expense.amount %> 
  <a href= expenses/<%=expense.id%>/edit> Edit <a/>
  <form action="/expenses/<%=expense.id%>" method="post">
  <input type="hidden" name="_method" value="delete">
        <input type="submit" value="delete expense" > </p>
+<%end%>
 <%end%>
 </div>
 <p> <a href="/expenses/new">Create New Expense </p>

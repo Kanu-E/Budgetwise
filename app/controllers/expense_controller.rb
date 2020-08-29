@@ -45,12 +45,12 @@ class ExpenseController < ApplicationController
 
     delete '/expenses/:id' do
         expense = Expense.find(params[:id])
-        if expense.user == currrent_user
+        if expense.user == current_user
         expense.destroy
         redirect '/expenses'
         else
         redirect '/expenses'
         end
     end
-    
+
 end
