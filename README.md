@@ -1,18 +1,19 @@
-BudgetWise App
+## BudgetWise App
  
 Contributions are Welcome
 
-Description
+## Description
 
 The Budgetwise app is created for users to be able to track their financial expenditure. Users can created and edit expenses and view all their outstanding expenditures
 
+## Installation
 
-Installation
-gem install sinatra_biz_us
+```bash
+gem install sinatra_project_budget_app
+```
 
-Future scope
+## Future scope
 Styling 
 
-Licence
-
-MIT
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
