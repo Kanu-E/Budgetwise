@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
 
     post '/signup' do
         if params[:username].empty? || params[:email].empty?
+            @error = "There was an error, all fields must be completed"
             erb :'sessions/signup'
         else
         user = User.create(params)

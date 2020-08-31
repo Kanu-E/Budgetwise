@@ -11,6 +11,7 @@ class ExpenseController < ApplicationController
         if @exp.save
             redirect '/expenses'
         else
+            @error = "There was an error, all fields must be completed"
             erb :'expense/new'   
         end
     end
@@ -25,7 +26,7 @@ class ExpenseController < ApplicationController
 
     get '/expenses/:id/edit' do
         if logged_in?
-            @expense = Expense.find(params[:id])
+            get_expense
         else
             redirect '/signin'
         end
@@ -38,13 +39,13 @@ class ExpenseController < ApplicationController
     end
 
     patch '/expenses/:id' do
-        expense = Expense.find(params[:id])
+        get_expense
         expense.update(title: params[:title], amount: params[:amount])
         redirect '/expenses'
     end
 
     delete '/expenses/:id' do
-        expense = Expense.find(params[:id])
+        get_expense
         if expense.user == current_user
         expense.destroy
         redirect '/expenses'
@@ -53,4 +54,8 @@ class ExpenseController < ApplicationController
         end
     end
 
+    def get_expense
+        @expense = Expense.find(params[:id])
+    end
+    
 end
