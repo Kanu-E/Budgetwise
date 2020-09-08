@@ -1,8 +1,7 @@
 <h2> Welcome new user! Please add details to sign up. </h2>
-
+<% if @error %>
 <p><%= @error %></p>
-
-
+<%end%>
 
 <form action="/signup" method="post">
 
@@ -17,5 +16,7 @@
 <p><input type="password" name="password" placeholder="Please choose a password" size="50"></p>
 
 <p><input type="submit" value="Sign up" ></p>
+
+
 
 </form>

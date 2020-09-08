@@ -40,19 +40,21 @@ class ExpenseController < ApplicationController
 
     patch '/expenses/:id' do
         get_expense
-        expense.update(title: params[:title], amount: params[:amount])
+        @expense.update(title: params[:title], amount: params[:amount])
         redirect '/expenses'
     end
 
     delete '/expenses/:id' do
         get_expense
-        if expense.user == current_user
-        expense.destroy
+        if @expense.user == current_user
+        @expense.destroy
         redirect '/expenses'
         else
         redirect '/expenses'
         end
     end
+   
+    private 
 
     def get_expense
         @expense = Expense.find(params[:id])

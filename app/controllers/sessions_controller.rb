@@ -10,10 +10,17 @@ class SessionsController < ApplicationController
             erb :'sessions/signup'
         else
         user = User.create(params)
-        session[:user_id] = user.id
-        redirect '/expenses'
+            if user.valid?
+                session[:user_id] = user.id
+                redirect '/expenses'
+            else 
+            binding.pry
+                @error = "The username or email already exists"  
+                erb :'sessions/signup'
+            end
         end
     end
+ 
 
     get '/signin' do
         erb :'sessions/signin'
